@@ -1,0 +1,103 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Time",
+      "name": "time",
+      "kind": "Grouping"
+    },
+    {
+      "displayName": "Mesh Data (JSON)",
+      "name": "meshData",
+      "kind": "Grouping"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "time": { "max": 1 },
+          "meshData": { "max": 1 }
+        }
+      ],
+      "table": {
+        "rows": {
+          "select": [
+            { "for": { "in": "time" } },
+            { "for": { "in": "meshData" } }
+          ],
+          "dataReductionAlgorithm": {
+            "top": {
+              "count": 10000
+            }
+          }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "rendering": {
+      "displayName": "Rendering",
+      "properties": {
+        "showWireframe": {
+          "displayName": "Show Wireframe",
+          "type": {
+            "bool": true
+          }
+        },
+        "showAxes": {
+          "displayName": "Show Axes",
+          "type": {
+            "bool": true
+          }
+        },
+        "autoRotate": {
+          "displayName": "Auto Rotate",
+          "type": {
+            "bool": true
+          }
+        },
+        "rotationSpeed": {
+          "displayName": "Rotation Speed",
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "camera": {
+      "displayName": "Camera",
+      "properties": {
+        "viewAngle": {
+          "displayName": "Isometric View",
+          "type": {
+            "enumeration": [
+              {
+                "displayName": "North East",
+                "value": "NE"
+              },
+              {
+                "displayName": "North West",
+                "value": "NW"
+              },
+              {
+                "displayName": "South West",
+                "value": "SW"
+              },
+              {
+                "displayName": "South East",
+                "value": "SE"
+              }
+            ]
+          }
+        },
+        "distance": {
+          "displayName": "Camera Distance",
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    }
+  },
+  "privileges": []
+}

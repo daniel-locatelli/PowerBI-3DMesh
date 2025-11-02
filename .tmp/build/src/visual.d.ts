@@ -1,0 +1,32 @@
+import powerbi from "powerbi-visuals-api";
+import IVisual = powerbi.extensibility.visual.IVisual;
+import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructorOptions;
+import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
+import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
+import VisualObjectInstance = powerbi.VisualObjectInstance;
+import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
+export declare class Visual implements IVisual {
+    private target;
+    private host;
+    private scene;
+    private camera;
+    private renderer;
+    private mesh;
+    private meshGroup;
+    private animationFrameId;
+    private axesHelper;
+    private gridHelper;
+    private settings;
+    constructor(options: VisualConstructorOptions);
+    private initThreeJS;
+    private updateCameraPosition;
+    private animate;
+    update(options: VisualUpdateOptions): void;
+    enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject;
+    private parseFrameData;
+    private createMeshFromFrame;
+    private centerMesh;
+    private scaleGroup;
+    private handleResize;
+    destroy(): void;
+}
